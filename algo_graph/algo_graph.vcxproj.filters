@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="algo_graph.cpp">
+    <ClCompile Include="find_path.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
