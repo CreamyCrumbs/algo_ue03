@@ -55,7 +55,19 @@ void read_file(const std::string& filename, std::vector<Linie>& lines)
         }
     }
     infile.close();
+}
 
+void print_plan(std::vector<Linie> lines)
+{
+        for (int i = 0; i < lines.size(); ++i)
+        {
+            std::cout << lines.at(i).line << std::endl;
+            for (int j = 0; j < lines.at(i).stations.size(); ++j)
+            {
+				std::cout << lines.at(i).stations.at(j).station_name << std::endl;
+            }
+            std::cout << std::endl << "___________________________________________" << std::endl;
+        }
 }
 
 int main(int argument_count, char* argument_vector[])
@@ -82,11 +94,11 @@ int main(int argument_count, char* argument_vector[])
 
 		//????
 		std::vector<Linie> lines;
-		std::ifstream start(start_point);
-		std::ifstream ziel(end_point);
 
 		read_file(filename, lines);
+		print_plan(lines);
     }
+
 
     return 0;
 }
