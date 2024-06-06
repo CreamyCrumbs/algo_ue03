@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -14,15 +13,15 @@ struct Station
 
 class Linie
 {
-public:
-    std::string line;
-    std::vector<Station> stations;
+	public:
+		std::string line;
+		std::vector<Station> stations;
 
-    //Stationen zur Linie hinzufügen:
-    void add_station(const std::string& station_name, int travel_duration) 
-    {
-        stations.push_back({ station_name, travel_duration });
-    }
+		//Stationen zur Linie hinzufügen:
+		void add_station(const std::string& station_name, int travel_duration) 
+		{
+			stations.push_back({ station_name, travel_duration });
+		}
 };
 
 void read_file(const std::string& filename, std::vector<Linie>& lines)
@@ -59,21 +58,36 @@ void read_file(const std::string& filename, std::vector<Linie>& lines)
 
 }
 
-int main(int argc, char* argv[])
+int main(int argument_count, char* argument_vector[])
 {
-    //bereits markierte Knoten müssen vermerkt werden, mögl. bool
-    bool prev_visited = false;
+    using namespace std;
 
-    //????
-    std::vector<Linie> lines;
-    std::string filename;
-    std::string start;
-    std::ifstream start(argv[1]);
-    std::string ziel;
-    std::ifstream ziel(argv[2]);
+    if (argument_count != 4)
+    {
+        cout << "Sie muessen folgende informationen uebergeben in folgendem format: Dateiname.txt Start Ziel" << endl;
+    }
+    else
+    {
+		string filename = argument_vector[1];
+		string start_point = argument_vector[2];
+		string end_point = argument_vector[3];
 
 
-    read_file(filename, lines);
+        cout << filename << endl;
+        cout << start_point << endl;
+        cout << end_point << endl;
 
+		//bereits markierte Knoten müssen vermerkt werden, mögl. bool
+		bool prev_visited = false;
+
+		//????
+		std::vector<Linie> lines;
+		std::ifstream start(start_point);
+		std::ifstream ziel(end_point);
+
+		read_file(filename, lines);
+    }
+
+    return 0;
 }
 
